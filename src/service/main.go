@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// Request body payload of the 'POST /multiply' endpoint
 type MultiplyRequest struct {
 	X int `json:"x"`
 	Y int `json:"y"`
