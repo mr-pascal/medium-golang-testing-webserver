@@ -20,8 +20,8 @@ func TestMultiply(t *testing.T) {
 		y int
 		r int
 	}{
-		{x: 1, y: 2, r: 2}, // normal multiplication with named parameters
-		{2, 3, 6},          // normal multiplication
+		{x: 1, y: 2, r: 2}, // normal multiplication with named struct parameters
+		{2, 3, 6},          // normal multiplication with anonymous struct parameters
 		{0, 0, 0},          // both zero
 		{2, 0, 0},          // x is zero
 		{0, 2, 0},          // y is zero
