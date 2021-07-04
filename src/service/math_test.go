@@ -19,10 +19,11 @@ func TestMultiply(t *testing.T) {
 		y int
 		r int
 	}{
-		{1, 1, 1},
+		{x: 1, y: 1, r: 1},
 		{1, 2, 2},
-		{2, 2, 4},
-		{5, 2, 10},
+		{0, 0, 0},
+		{2, 0, 0},
+		{-5, 2, -10},
 	}
 
 	for _, table := range tables {
