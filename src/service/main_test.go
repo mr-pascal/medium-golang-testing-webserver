@@ -29,19 +29,22 @@ type AppHandlerFake struct {
 	Calls map[string][][]interface{}
 }
 
+const sumMethodName = "Sum"
+const multiplyMethodName = "Multiply"
+
 func (a *AppHandlerFake) Sum(x, y int) (r Result) {
-	b := a.Calls[`Sum`]
+	b := a.Calls[sumMethodName]
 	c := []interface{}{x, y}
-	a.Calls[`Sum`] = append(b, c)
+	a.Calls[sumMethodName] = append(b, c)
 
 	r.Value = 7
 	return
 }
 func (a *AppHandlerFake) Multiply(x, y int) (r Result) {
-	b := a.Calls[`Multiply`]
+	b := a.Calls[multiplyMethodName]
 	c := []interface{}{x, y}
 
-	a.Calls[`Multiply`] = append(b, c)
+	a.Calls[multiplyMethodName] = append(b, c)
 
 	r.Value = 10
 	return
@@ -68,7 +71,7 @@ func TestApp(t *testing.T) {
 			statusCode:            200,
 			requestBody:           nil,
 			body:                  `{"value":7}`,
-			handlerMethodName:     "Sum",
+			handlerMethodName:     sumMethodName,
 			handlerToBeCalledWith: []interface{}{5, 2},
 			headers:               map[string]string{`Content-Type`: `application/json`},
 		},
@@ -95,7 +98,7 @@ func TestApp(t *testing.T) {
 				"y": 5,
 			},
 			body:                  `{"value":10}`,
-			handlerMethodName:     "Multiply",
+			handlerMethodName:     multiplyMethodName,
 			handlerToBeCalledWith: []interface{}{4, 5},
 			headers:               map[string]string{`Content-Type`: `application/json`},
 		},
@@ -175,7 +178,7 @@ func TestAppNoMock(t *testing.T) {
 			statusCode:            200,
 			requestBody:           nil,
 			body:                  `{"value":7}`,
-			handlerMethodName:     "Sum",
+			handlerMethodName:     sumMethodName,
 			handlerToBeCalledWith: []interface{}{5, 2},
 			headers:               map[string]string{`Content-Type`: `application/json`},
 		},
