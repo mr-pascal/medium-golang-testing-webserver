@@ -24,13 +24,13 @@ func Equal(a, b []interface{}) bool {
 	return true
 }
 
+const sumMethodName = "Sum"
+const multiplyMethodName = "Multiply"
+
 type AppHandlerFake struct {
 	// method name -> call -> params
 	Calls map[string][][]interface{}
 }
-
-const sumMethodName = "Sum"
-const multiplyMethodName = "Multiply"
 
 func (a *AppHandlerFake) Sum(x, y int) (r Result) {
 	b := a.Calls[sumMethodName]
