@@ -52,17 +52,28 @@ func (a *AppHandlerFake) Multiply(x, y int) (r Result) {
 
 func TestApp(t *testing.T) {
 
+	// Create our test table
 	testTable := []struct {
-		name                  string
-		method                string
-		path                  string
-		statusCode            int
-		body                  string
-		requestBody           map[string]interface{}
-		handlerMethodName     string
+		// The name of the test
+		name string
+		// The HTTP method to use in our call
+		method string
+		// The URL path that is being requested
+		path string
+		// The expected response status code
+		statusCode int
+		// The expected response body, as string
+		body string
+		// The request body to sent with the request
+		requestBody map[string]interface{}
+		// The name of the AppHandlerFake method that we want to spy on
+		handlerMethodName string
+		// The parameters we expect the 'handlerMethodName' on the AppHandlerFake to be called with
 		handlerToBeCalledWith []interface{}
-		requestHeaders        map[string]string
-		headers               map[string]string
+		// The headers that are being set for the request
+		requestHeaders map[string]string
+		// The response headers we want to test on
+		headers map[string]string
 	}{
 		{
 			name:                  `GET endpoint to get a sum`,
